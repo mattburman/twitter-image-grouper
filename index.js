@@ -1,4 +1,4 @@
-// Twit broken on 6.x node, using 4.4.7
+// Twit streaming broken on 6.x node, using 4.4.7
 
 const Twit = require('twit');
 var Clarifai = require('clarifai');
@@ -24,6 +24,7 @@ var clarifai = new Clarifai.App(
 clarifai
 	.models
 	.predict(Clarifai.GENERAL_MODEL, EXAMPLE_IMAGE)
-	.then(thing => console.log(thing.data.outputs[0].data.concepts))
+	.then(res => console.log(res.data.outputs[0].data.concepts))
 	.catch(err => console.log('err: ', err));
+
 
