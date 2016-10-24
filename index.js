@@ -21,10 +21,12 @@ var clarifai = new Clarifai.App(
   process.env.CLARIFAI_CLIENT_SECRET
 );
 
-clarifai
-	.models
-	.predict(Clarifai.GENERAL_MODEL, EXAMPLE_IMAGE)
-	.then(res => console.log(res.data.outputs[0].data.concepts))
-	.catch(err => console.log('err: ', err));
+function predict(url, cb) {
+	clarifai
+		.models
+		.predict(Clarifai.GENERAL_MODEL, EXAMPLE_IMAGE)
+		.then(res => cb(null, res.data.outputs[0].data.concepts))
+		.catch(err => cb(err));
+}
 
-
+predict(EXAMPLE_IMAGE, (err, res) => console.log(res));
