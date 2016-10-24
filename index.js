@@ -14,7 +14,15 @@ const bot = new Twit({
 console.log(process.argv[2]);
 const stream = bot.stream('statuses/filter', { track: process.argv[2] });
 
-stream.on('tweet', tweet => console.log(tweet.text));
+stream.on('tweet', tweet => {
+	// console.log(tweet.entities.media);
+	if (!tweet.entities.media || !tweet.entities.media[0]) return; // no image in tweet
+
+	predict(tweet.entities.media[0].media_url_https, (err, res) => {
+    //console.log(res.map(el => el.name));
+		console.log(res[0].name + ': ' + tweet.entities.media[0].media_url_https);
+	});
+});
 
 var clarifai = new Clarifai.App(
   process.env.CLARIFAI_CLIENT_ID,
@@ -24,9 +32,10 @@ var clarifai = new Clarifai.App(
 function predict(url, cb) {
 	clarifai
 		.models
-		.predict(Clarifai.GENERAL_MODEL, EXAMPLE_IMAGE)
+		.predict(Clarifai.GENERAL_MODEL, url)
 		.then(res => cb(null, res.data.outputs[0].data.concepts))
 		.catch(err => cb(err));
 }
 
-predict(EXAMPLE_IMAGE, (err, res) => console.log(res));
+// predict(EXAMPLE_IMAGE, (err, res) => console.log(res));
+
