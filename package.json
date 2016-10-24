@@ -1,0 +1,25 @@
+{
+  "name": "twitter-image-grouper",
+  "version": "1.0.0",
+  "description": "Stream images to structured folders using Clarifai!",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mattburman/twitter-image-grouper.git"
+  },
+  "keywords": [
+    "clarifai",
+    "node",
+    "twitter",
+    "apis"
+  ],
+  "author": "Matt Burman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mattburman/twitter-image-grouper/issues"
+  },
+  "homepage": "https://github.com/mattburman/twitter-image-grouper#readme"
+}
