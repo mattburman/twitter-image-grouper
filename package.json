@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/mattburman/twitter-image-grouper#readme",
   "dependencies": {
+    "clarifai": "^2.0.9",
     "twit": "^2.2.5"
   }
 }
