@@ -2,11 +2,12 @@
 
 const Twit = require('twit');
 const Clarifai = require('clarifai');
+const dlImg = require('image-downloader');
+const path = require('path');
+
 const EXAMPLE_IMAGE = 'http://www.newyorker.com/wp-content/uploads/2016/01/Borowitz-Donald-Trump-1200.jpg';
 const DEFAULT_DIR = 'img';
 const dir = (process.argv[3] || DEFAULT_DIR);
-const dlImg = require('image-downloader');
-const path = require('path');
 
 console.log(process.argv);
 console.log(dir);
@@ -16,7 +17,7 @@ if (ls().indexOf(dir) === -1) mkdir(dir);
 const bot = new Twit({
   consumer_key: process.env.TWITTER_CONSUMER_KEY,
   consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
-  access_token:	process.env.TWITTER_ACCESS_TOKEN,
+  access_token: process.env.TWITTER_ACCESS_TOKEN,
   access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
 });
 
